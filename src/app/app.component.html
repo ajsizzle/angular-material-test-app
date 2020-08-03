@@ -1,6 +1,17 @@
 
-
-<div>
-  <mat-button-toggle #toggleBtn>Toggle</mat-button-toggle>
-  {{ toggleBtn.checked }}
-</div>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over" [(opened)]="opened">Sidenav</mat-sidenav>
+  <mat-sidenav-content>Main
+    <button (click)="opened=!opened">Toggle Opened</button>
+    <mat-menu #appMenu="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="subMenu">FrontEnd</button>
+      <button mat-menu-item>BackEnd</button>
+    </mat-menu>
+    <button mat-flat-button [matMenuTriggerFor]="appMenu">Menu</button>
+      <mat-menu #subMenu="matMenu">
+        <button mat-menu-item>Angular</button>
+        <button mat-menu-item>React</button>
+        <button mat-menu-item>Vue</button> 
+      </mat-menu>
+  </mat-sidenav-content>
+</mat-sidenav-container>
